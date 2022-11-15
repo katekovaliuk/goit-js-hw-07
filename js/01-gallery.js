@@ -39,14 +39,27 @@ function createGalleryItems(galleryItems) {
  
 }
 
+let modalWindow;
+
 function onImageClick(event) {
     event.preventDefault();
+    if (event.target.nodeName !== "IMG") {
+    return;
+  }
     console.log(event.target.dataset.source);
-
-    let modalWindow;
+ 
     modalWindow = basicLightbox.create(`
     <img src="${event.target.dataset.source}"> width ="800" height="600"`);
 
     modalWindow.show();
+    window.addEventListener('keydown', onEscKeyPress);
+    
 };
 
+
+   function onEscKeyPress(event){
+         if (event.code === 'Escape'){
+             modalWindow.close();
+    };
+   
+    }
