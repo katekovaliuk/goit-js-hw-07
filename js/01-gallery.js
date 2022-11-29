@@ -19,7 +19,6 @@ galleryRef.insertAdjacentHTML("beforeend", imageMarkup);
 galleryRef.addEventListener("click", onImageClick);
 
 
-
 function createGalleryItems(galleryItems) {
     return galleryItems.map(({ preview, original, description }) => {
         return `
@@ -53,13 +52,15 @@ function onImageClick(event) {
 
     modalWindow.show();
     window.addEventListener('keydown', onEscKeyPress);
-    
+  
 };
 
 
    function onEscKeyPress(event){
          if (event.code === 'Escape'){
              modalWindow.close();
+             window.removeEventListener();
+            
     };
    
     }
